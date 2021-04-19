@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+}
+
+.buttonStyle{
+
+  border: 1px solid cornflowerblue;
+  font: inherit;
+  background-color: white;
+  padding: 8px;
+  box-shadow: 3px 2px 7px cornflowerblue;
+  cursor: pointer;
+  
+}
+
+.buttonStyle:hover{
+
+  background-color: aliceblue
+}
+
