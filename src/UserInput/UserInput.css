@@ -1,0 +1,15 @@
+.input{
+    margin: 20px auto;
+    padding: 2px;
+ 
+    
+ 
+}
+
+.input > .field:focus{
+    border: 4pt solid cadetblue;
+    border-radius: 4pt;
+    
+    background-color: lightblue;
+
+}

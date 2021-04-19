@@ -1,39 +1,36 @@
  
 import React, {Component} from 'react';
 import './App.css';
-import Person from './Person/Person'
+import UserOutput from './UserOutput/UserOutput'
+import UserInput from './UserInput/UserInput'
+
 class App extends Component {
 
   state = {
 
-    persons: [
-      {name:'Max', age:28},
-      {name:'Manu', age:28},
-      {name: 'Stephanie', age: 26}
+    users : [
+        {user:'Carlos'},
+        {user: 'Ulises'} 
     ]
 
   }
-  switchNameHandler = (newName) => {
+  changeUserNameHandler = (newName) => {
 
-    console.log('Was clicked');
-     this.setState({persons: [{name: newName, age:26}]});
+     this.setState({
+       users: [
+         {user: newName.target.value},
+         {user: 'Ulises'} 
+        ]
+      });
   }
 
   render() {
     return (
 
       <div className="App">
-        <h1>Hi I'm a react app</h1>
-        <p>This is really working!</p>
-        <button className="buttonStyle :hover" onClick={this.switchNameHandler.bind(this,'Ulises')}>Switch name</button>
-        <Person 
-          name={this.state.persons[0].name} 
-          age={this.state.persons[0].age}
-          click={this.switchNameHandler.bind(this,'Carlos')}
-
-          />
-
-
+          <UserInput changed={this.changeUserNameHandler} name={'input'}/>
+          <UserOutput user={this.state.users[0].user}>My Hooby is playing cards</UserOutput>
+          <UserOutput user={this.state.users[1].user}>And mine is Coding at night!</UserOutput>
       </div>
     );
    
@@ -42,3 +39,4 @@ class App extends Component {
 
 export default App;
  
+
