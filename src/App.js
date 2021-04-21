@@ -2,38 +2,47 @@
 import React, {Component} from 'react';
 import './App.css';
 import Person from './Person/Person'
+
+
 class App extends Component {
 
   state = {
 
-    persons: [
-      {name:'Max', age:28},
-      {name:'Manu', age:28},
-      {name: 'Stephanie', age: 26}
+    users : [
+        {name: 'Ulises', age : 29},
+        {name:'Carlos', age : 28},
+        {name:'Stephanie', age : 31}
     ]
 
   }
-  switchNameHandler = (newName) => {
+  changeUserNameHandler = (newName) => {
 
-    console.log('Was clicked');
-     this.setState({persons: [{name: newName, age:26}]});
+     this.setState({
+       users: [
+          {name: newName.target.value, age:23},
+          {name:'Carlos', age :28},
+          {name: 'Stephanie', age :31} 
+        ]
+      });
   }
+  changeUserNameHardHandler = (newName) => {
+
+    this.setState({
+      users: [
+        {name: newName, age:23},
+        {name:'Carlos', age :28},
+        {name: 'Stephanie', age :31} 
+       ]
+     });
+ }
 
   render() {
     return (
 
       <div className="App">
-        <h1>Hi I'm a react app</h1>
-        <p>This is really working!</p>
-        <button className="buttonStyle :hover" onClick={this.switchNameHandler.bind(this,'Ulises')}>Switch name</button>
-        <Person 
-          name={this.state.persons[0].name} 
-          age={this.state.persons[0].age}
-          click={this.switchNameHandler.bind(this,'Carlos')}
-
-          />
-
-
+          <Person name={this.state.users[0].name} age={this.state.users[0].age } changed={this.changeUserNameHandler} click={this.changeUserNameHardHandler.bind(this,'Max')}></Person>
+          <Person name={this.state.users[1].name} age={this.state.users[1].age } click={this.changeUserNameHardHandler.bind(this,'Louis')}>My Hooby is playing cards</Person>
+          <Person name={this.state.users[2].name} age={this.state.users[2].age } click={this.changeUserNameHardHandler.bind(this,'Bob')}>And mine is Coding at night!</Person>
       </div>
     );
    
@@ -42,3 +51,4 @@ class App extends Component {
 
 export default App;
  
+
