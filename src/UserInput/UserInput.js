@@ -1,13 +1,13 @@
 import React from 'react';
 import './UserInput.css';
 
-const Userinput = (props) => {
+const userInput = (props) => {
 
     return(
         <div className="input">
-            <input className="field" type='text' onChange={props.changed} value={props.user}></input>
+            <input className="field" type='text' onChange={props.changed} placeholder={props.userName}></input>
         </div>
     );
 }
 
-export default Userinput;
+export default userInput;

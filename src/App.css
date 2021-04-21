@@ -1,5 +1,12 @@
+body{
+  background-color: rgb(195, 253, 156);
+  
+}
+
 .App {
-  text-align: center;
+  text-align: left;
+  padding: 1rem;
+  margin: 1rem;
 }
 
 .buttonStyle{
