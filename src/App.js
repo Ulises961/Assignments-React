@@ -1,76 +1,59 @@
  
 import React, {Component} from 'react';
 import './App.css';
-import Person from './Person/Person'
-
+import Validation from './Validation/Validation';
+import CharComponent from './CharComponent/CharComponent';
 
 class App extends Component {
 
   state = {
+    input: ''
+   
+   }
 
-    users : [
-        {name: 'Ulises', age : 29},
-        {name:'Carlos', age : 28},
-        {name:'Stephanie', age : 31}
-    ],
-    showPersons : false
+inputChangeHandler = (event) =>{
 
-  }
-  changeUserNameHandler = (newName) => {
+  const newInput= event.target.value;
+  
+  this.setState({input: newInput});
 
-     this.setState({
-       users: [
-          {name: newName.target.value, age:23},
-          {name:'Carlos', age :28},
-          {name: 'Stephanie', age :31} 
-        ]
-      });
-  }
-  changeUserNameHardHandler = (newName) => {
+}
 
-    this.setState({
-      users: [
-        {name: newName, age:23},
-        {name:'Carlos', age :28},
-        {name: 'Stephanie', age :31} 
-       ]
-     });
- }
 
- togglePersonHandler = () => {
-  console.log("clicked");
-  const doesShow = this.state.showPersons;
-  this.setState({showPersons: !doesShow}); 
+deleteCharHandler = (index) =>{
+
+  let newChars = this.state.input.split('');
+
+  newChars.splice(index,1);
+  const text = newChars.join('');
+  this.setState({input: text});
+
+
+
 }
 
   render() {
-    const style = {
-      backgroundColor :' white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    };
-    return (
-      
+   
+    const chars = this.state.input.split('').map((char,index)=>{
+      return (
+        <CharComponent 
+          clicked={()=> this.deleteCharHandler(index)} 
+          key={(index)} 
+          char={char}/>)  
+      });
 
+      
+    return (
+     
       <div className="App">
-      <button 
-        style={style}
-        onClick={this.togglePersonHandler}>Swtich</button>
-       
-     { this.state.showPersons  ?
-        <div>          
-          <Person name={this.state.users[0].name} age={this.state.users[0].age } changed={this.changeUserNameHandler} click={this.changeUserNameHardHandler.bind(this,'Max')}/>
-          <Person name={this.state.users[1].name} age={this.state.users[1].age } click={this.changeUserNameHardHandler.bind(this,'Louis')}>My Hooby is playing cards</Person>
-          <Person name={this.state.users[2].name} age={this.state.users[2].age } click={this.changeUserNameHardHandler.bind(this,'Bob')}>And mine is Coding at night!</Person>
-      </div> : null
-      }
+        <Validation changed={this.inputChangeHandler} value ={this.state.input} length={this.state.input.length}></Validation>
+       {chars}
       </div>
     );
    
   } 
 }
+
 
 export default App;
  
