@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.buttonStyle{
+/* .buttonStyle{
 
   border: 1px solid cornflowerblue;
   font: inherit;
@@ -11,7 +11,7 @@
   box-shadow: 3px 2px 7px cornflowerblue;
   cursor: pointer;
   
-}
+} */
 
 .buttonStyle:hover{
 
