@@ -1,7 +1,8 @@
  
-import React, {Component} from 'react';
+import React, {Component} from 'react';   
 import classes from './App.module.css' ;
-import Person from './Person/Person'
+import Persons from '../components/Persons/Person/Person';
+
 
 
 class App extends Component {
@@ -43,15 +44,14 @@ class App extends Component {
    
    
     if(this.state.showPersons){
-      persons = (<div> 
-      { this.state.users.map((user,index) => {
-        return <Person name={user.name} 
-        age={user.age } 
-        changed={(event) => this.changeUserNameHandler(event,user.userId)} 
-        click={() => this.deleteUserHandler(index)}
-        key={this.state.users[index].userId}
-        />
-        })} </div>);
+      persons = (
+        <div>
+          <Persons
+            users ={this.state.users}
+            clicked={this.deleteUserHandler}
+            changed={this.changeUserNameHandler}/>
+        </div>
+       );
         
        buttonClass.push(classes.Red);
         
